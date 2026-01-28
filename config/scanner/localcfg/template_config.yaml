@@ -1,0 +1,52 @@
+env: live # test
+
+# 扫描配置
+scanner:
+  # 目标网站 URL
+  target_url: "https://example.com"
+  # 关键词列表
+  keywords:
+    - "examplexxxx"
+    - "test"
+  # 最大爬取深度
+  max_depth: 3
+  # 请求超时时间（毫秒）
+  request_timeout_ms: 10000
+  # 请求间隔（毫秒），避免对目标网站造成压力
+  request_interval_ms: 500
+  # 最大并发请求数
+  max_concurrent: 5
+  # 用户代理
+  user_agent: "KeySpy/1.0 (+https://github.com/gw-gong/key-spy)"
+
+# 定时任务配置
+cron:
+  # cron 表达式 - 每天凌晨 2 点执行
+  spec: "0 0 2 * * *"
+  # 是否启用定时任务（false 则只执行一次）
+  enabled: false
+
+# 输出配置
+output:
+  # 输出目录
+  dir: "./output"
+  # 文件名前缀
+  file_prefix: "scan_result"
+
+# 通知配置
+notifier:
+  # 是否启用通知
+  enabled: false
+  # 企业微信 Webhook 配置
+  wechat_webhook:
+    # 完整的 Webhook URL
+    url: ""
+    # 请求超时时间（毫秒）
+    timeout: 5000
+
+# 日志配置
+logger:
+  level: debug
+  output_to_console:
+    enable: true
+    encoding: console

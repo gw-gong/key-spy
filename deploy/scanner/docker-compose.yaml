@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  key-spy:
+    build:
+      context: ../..
+      dockerfile: deploy/scanner/Dockerfile
+    image: key-spy:latest
+    container_name: key-spy-scanner
+    restart: unless-stopped
+    volumes:
+      - ../../output:/data/key-spy/output
+      - ../../logs:/data/key-spy/logs
+      - ../../config:/app/config:ro
+    environment:
+      - TZ=Asia/Shanghai
+    command: ["-cfg_path", "/app/config/scanner/localcfg", "-cfg_name", "live.yaml"]
